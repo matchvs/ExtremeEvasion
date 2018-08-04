@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "ab3e3c38-b1c5-4ff2-9e0c-64f9398fed4d",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "invincible2": {
+      "ver": "1.0.3",
+      "uuid": "756db6ba-0486-46f2-a012-1c59fd59c6b1",
+      "rawTextureUuid": "ab3e3c38-b1c5-4ff2-9e0c-64f9398fed4d",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 134,
+      "height": 146,
+      "rawWidth": 134,
+      "rawHeight": 146,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
