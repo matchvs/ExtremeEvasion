@@ -139,6 +139,8 @@ cc.Class({
     },
 
     inviteFriend: function() {
-        wx.shareAppMessage();
+        if (window.wx) {
+            wx.shareAppMessage({imageUrl: "https://data.tianziyou.com/matchvsGamesRes/logo/extremeEvasionLogo.png"});
+        }
     }
 });

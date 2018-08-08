@@ -16,23 +16,25 @@ cc.Class({
         this.getRankDataListener();
         this.findPlayerByAccountListener();
 
-        wx.login({
-            success: function() {
-                wx.getUserInfo({
-                    fail: function(res) {
-                        // iOS 和 Android 对于拒绝授权的回调 errMsg 没有统一，需要做一下兼容处理
-                        if (res.errMsg.indexOf('auth deny') > -1 || res.errMsg.indexOf('auth denied') > -1) {
-                            // 处理用户拒绝授权的情况
+        if (window.wx) {
+            wx.login({
+                success: function() {
+                    wx.getUserInfo({
+                        fail: function(res) {
+                            // iOS 和 Android 对于拒绝授权的回调 errMsg 没有统一，需要做一下兼容处理
+                            if (res.errMsg.indexOf('auth deny') > -1 || res.errMsg.indexOf('auth denied') > -1) {
+                                // 处理用户拒绝授权的情况
+                            }
+                        },
+                        success: function(res) {
+                            Game.GameManager.nickName = res.userInfo.nickName;
+                            Game.GameManager.avatarUrl = res.userInfo.avatarUrl;
+                            console.log('success', Game.GameManager.nickName);
                         }
-                    },
-                    success: function(res) {
-                        Game.GameManager.nickName = res.userInfo.nickName;
-                        Game.GameManager.avatarUrl = res.userInfo.avatarUrl;
-                        console.log('success', Game.GameManager.nickName);
-                    }
-                });
-            }
-        })
+                    });
+                }
+            })
+        }
     },
 
     leaveRoom: function(data) {
@@ -341,21 +343,21 @@ cc.Class({
             if (info.cpProto.indexOf(GLB.DIFFUSE_ITEM_GET) >= 0) {
                 if (GLB.userInfo.id === cpProto.playerId) {
                     let position = Game.PlayerManager.self.node.getPosition();
-                    Game.BulletManager.diffuseBullet("blue",position)
+                    Game.BulletManager.diffuseBullet("blue", position)
                 } else {
                     let position = Game.PlayerManager.rival.node.getPosition();
-                    Game.BulletManager.diffuseBullet("green",position)
+                    Game.BulletManager.diffuseBullet("green", position)
                 }
             }
             if (info.cpProto.indexOf(GLB.RADINTION_ITEM_GET) >= 0) {
                 if (GLB.userInfo.id === cpProto.playerId) {
                     let obj = Game.PlayerManager.rival.node;
                     let position = Game.PlayerManager.self.node.getPosition();
-                    Game.BulletManager.radintionBullet(obj,position)
+                    Game.BulletManager.radintionBullet(obj, position)
                 } else {
                     let obj = Game.PlayerManager.self.node;
                     let position = Game.PlayerManager.rival.node.getPosition();
-                    Game.BulletManager.radintionBullet(obj,position)
+                    Game.BulletManager.radintionBullet(obj, position)
                 }
             }
 
