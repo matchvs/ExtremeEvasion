@@ -127,6 +127,8 @@ cc.Class({
     },
 
     createRoom: function() {
+        Game.GameManager.blockInput();
+
         if (cc.Canvas.instance.designResolution.height > cc.Canvas.instance.designResolution.width) {
             uiFunc.openUI("uiCreateRoomVer");
         } else {
@@ -135,6 +137,8 @@ cc.Class({
     },
 
     joinRoom: function() {
+        Game.GameManager.blockInput();
+
         if (cc.Canvas.instance.designResolution.height > cc.Canvas.instance.designResolution.width) {
             uiFunc.openUI("uiRoomListVer");
         } else {
