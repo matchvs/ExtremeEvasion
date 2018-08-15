@@ -57,7 +57,8 @@ cc.Class({
     },
 
     gameOver: function() {
-        if (this.gameState === GameState.Play) {
+        var gamePanel = uiFunc.findUI("uiGamePanel");
+        if (gamePanel && Game.GameManager.gameState !== GameState.Over) {
             console.log("游戏结束");
             Game.GameManager.gameState = GameState.Over;
             this.readyCnt = 0;
