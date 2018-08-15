@@ -22,8 +22,10 @@ cc.Class({
         this.playerPos = cc.p();
         this.node.on(cc.Node.EventType.TOUCH_START,this.touchstart,this);
         this.node.on(cc.Node.EventType.TOUCH_MOVE,this.touchmove,this);
-        this.node.on(cc.Node.EventType.TOUCH_END,this.touchend,this);
+        //this.node.on(cc.Node.EventType.TOUCH_END,this.touchmove,this);
     },
+
+
     touchstart(event){
         this.touchId = event.getID();
         this.clickPosBk = event.getLocation();
@@ -44,11 +46,11 @@ cc.Class({
         y = y > GLB.limitYTop - GLB.range ? GLB.limitYTop - GLB.range:
             y < -GLB.limitYBottom + GLB.range ? -GLB.limitYBottom + GLB.range : y;
         this.playerPos = cc.p(x,y);
-        this.node.dispatchEvent(new cc.Event.EventCustom(clientEvent.eventType.playerMove,true));
-    },
-    touchend(event){
     },
     //start () {},
-
-    // update (dt) {},
+    update (dt) {
+        if (this.bTouch){
+            this.node.dispatchEvent(new cc.Event.EventCustom(clientEvent.eventType.playerMove,true));
+        }
+    },
 });

@@ -155,7 +155,7 @@
         var jsList = settings.jsList;
 
         if (!false) {
-            var bundledScript = settings.debug ? 'src/project.dev.js' : 'src/project.7b12a.js';
+            var bundledScript = settings.debug ? 'src/project.dev.js' : 'src/project.c5b22.js';
             if (jsList) {
                 jsList = jsList.map(function (x) {
                     return 'src/' + x;
@@ -203,7 +203,7 @@
     }
 
     if (true) {
-        require(window._CCSettings.debug ? 'cocos2d-js.js' : 'cocos2d-js-min.dfd70.js');
+        require(window._CCSettings.debug ? 'cocos2d-js.js' : 'cocos2d-js-min.bb2d1.js');
         require('./libs/weapp-adapter/engine/index.js');
         var prevPipe = cc.loader.md5Pipe || cc.loader.assetLoader;
         cc.loader.insertPipeAfter(prevPipe, wxDownloader);
@@ -212,7 +212,7 @@
     }
 
     if (window.jsb) {
-        require('src/settings.40f63.js');
+        require('src/settings.3e0ba.js');
         require('src/jsb_polyfill.js');
         boot();
         return;
@@ -224,7 +224,7 @@
 
         var cocos2d = document.createElement('script');
         cocos2d.async = true;
-        cocos2d.src = window._CCSettings.debug ? 'cocos2d-js.js' : 'cocos2d-js-min.dfd70.js';
+        cocos2d.src = window._CCSettings.debug ? 'cocos2d-js.js' : 'cocos2d-js-min.bb2d1.js';
 
         var engineLoaded = function () {
             document.body.removeChild(cocos2d);

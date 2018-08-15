@@ -27,13 +27,13 @@ cc.Class({
     },
     onCollisionEnter: function (other) {
         var group = cc.game.groupList[other.node.groupIndex];
-        if(group === "redBullet" && !this.bUnmatched){
+        if(group === "redBullet"){
             this.sendHurtMsg();
         }
-        else if (group === "greenBullet" && this.node.name === "self" && !this.bUnmatched){
+        else if (group === "greenBullet" && this.node.name === "self"){
             this.sendHurtMsg();
         }
-        else if (group === "blueBullet" && this.node.name === "rival" && !this.bUnmatched){
+        else if (group === "blueBullet" && this.node.name === "rival"){
             this.sendHurtMsg();
         }
         if (group === "diffuseItem"){
@@ -50,6 +50,9 @@ cc.Class({
     },
     hurt() {
         //伤害接口
+        if (this.bUnmatched){
+            return;
+        }
         cc.audioEngine.play(this.boomClip, false, 1);
         if (this.heart > 0) {
             this.heart--;
@@ -73,6 +76,7 @@ cc.Class({
             };
             Game.GameManager.sendEventEx(msg);
         }
+
     },
     unmatchedState(animation){
       this.bUnmatched = true;
@@ -86,14 +90,12 @@ cc.Class({
       },3);
 
     },
-    move() {
-        this.node.setPosition(this.playerPos);
-    },
     setPlayerPosBk(){
         this.playerPosBk = this.node.getPosition();
     },
     setDirect(position) {
-        this.playerPos = position;
+        //this.playerPos = position;
+        this.node.setPosition(position);
     },
     sendHurtMsg() {
         if (Game.GameManager.gameState === GameState.Play && GLB.isRoomOwner) {
@@ -119,9 +121,5 @@ cc.Class({
             }));
         }
     },
-    update(dt) {
-        // if (this.heart > 0) {
-        //     this.node.x = cc.lerp(this.node.x, this.targetPosX, 4 * dt);
-        // }
-    }
+
 });

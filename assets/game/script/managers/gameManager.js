@@ -388,9 +388,6 @@ cc.Class({
             }
 
         }
-        Game.PlayerManager.self.move();
-        Game.PlayerManager.rival.move();
-
     },
 
     sendReadyMsg: function() {

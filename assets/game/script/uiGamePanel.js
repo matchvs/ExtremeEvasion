@@ -13,11 +13,17 @@ cc.Class({
         this._super();
         this.node.on(clientEvent.eventType.playerMove, this.playerMove, this);
         this.bCreateBullet = false;
+        this.bExit = false;
         clientEvent.on(clientEvent.eventType.roundStart, this.roundStart, this);
         clientEvent.on(clientEvent.eventType.gameOver, this.gameOver, this);
         clientEvent.on(clientEvent.eventType.leaveRoomMedNotify, this.leaveRoom, this);
+        this.nodeDict['readyGo'].getComponent(cc.Animation).on('finished',this.onFinished,this);
         this.nodeDict["exit"].on(cc.Node.EventType.TOUCH_START, this.exit, this);
         this.bgmId = cc.audioEngine.play(this.bgmAudio, true, 1);
+    },
+    onFinished(){
+        this.bExit = true;
+        this.nodeDict['readyGo'].getComponent(cc.Animation).off('finished',this.onFinished,this)
     },
     showLcon() {
         this.playerLcon = this.nodeDict["player"].getComponent("playerIcon");
@@ -70,6 +76,9 @@ cc.Class({
         }
     },
     exit() {
+        if (!this.bExit) {
+            return;
+        }
         uiFunc.openUI("uiExit");
     },
 
@@ -102,7 +111,6 @@ cc.Class({
         clientEvent.off(clientEvent.eventType.roundStart, this.roundStart, this);
         clientEvent.off(clientEvent.eventType.gameOver, this.gameOver, this);
         clientEvent.off(clientEvent.eventType.leaveRoomMedNotify, this.leaveRoom, this);
-
     },
 
 });

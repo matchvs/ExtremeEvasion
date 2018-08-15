@@ -36,8 +36,6 @@ cc.Class({
         } else {
             cc.audioEngine.play(this.loseClip, false, 1);
         }
-        this.nodeDict["playerScore"].getComponent(cc.Label).string = 3 - Game.PlayerManager.rival.heart;
-        this.nodeDict["rivalScore"].getComponent(cc.Label).string = 3 - Game.PlayerManager.self.heart;
     },
 
     quit: function() {

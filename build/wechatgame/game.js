@@ -4,5 +4,5 @@ window.DOMParser = Parser.DOMParser;
 require('libs/wx-downloader.js');
 wxDownloader.REMOTE_SERVER_ROOT = "https://data.tianziyou.com/matchvsGamesRes/extremeEvasion";
 wxDownloader.SUBCONTEXT_ROOT = "";
-require('src/settings.40f63');
-require('main.b99b1');
+require('src/settings.3e0ba');
+require('main.7834b');
