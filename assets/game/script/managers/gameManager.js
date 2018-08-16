@@ -23,6 +23,7 @@ cc.Class({
         this.network.chooseNetworkMode();
         this.getRankDataListener();
         this.findPlayerByAccountListener();
+        this.playerDie = false;
 
         if (window.wx) {
             wx.login({
@@ -386,7 +387,6 @@ cc.Class({
                     Game.BulletManager.radintionBullet(obj, position)
                 }
             }
-
         }
     },
 

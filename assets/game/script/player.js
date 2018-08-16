@@ -53,6 +53,9 @@ cc.Class({
         if (this.bUnmatched){
             return;
         }
+        if (Game.GameManager.playerDie) {
+            return;
+        }
         cc.audioEngine.play(this.boomClip, false, 1);
         if (this.heart > 0) {
             this.heart--;
@@ -60,6 +63,7 @@ cc.Class({
                 this.unmatchedState("damage");
             }
             else if (this.heart <= 0) {
+                Game.GameManager.playerDie = true;
                 var boom = cc.instantiate(this.boomPrefab);
                 boom.parent = this.node;
                 boom.position = cc.v2(0, 0);
