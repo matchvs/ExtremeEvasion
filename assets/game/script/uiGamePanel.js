@@ -94,7 +94,7 @@ cc.Class({
         this.nodeDict['readyGo'].getComponent(cc.AudioSource).play();
         this.createBullet();
         this.showLcon();
-
+        Game.GameManager.playerDie = false;
     },
     leaveRoom() {
         if (Game.GameManager.gameState !== GameState.Over) {
