@@ -45,13 +45,13 @@ window.GLB = {
 
     channel: 'MatchVS',
     platform: 'alpha',
-    gameId: 201408,
+    gameId: 201552,
     gameVersion: 1,
     IP: "wxrank.matchvs.com",
     PORT: "3010",
     GAME_NAME: "game5",
-    appKey: '0acff65acc984c5aaad2b362b58314bc',
-    secret: '372fdb54456f4717b913e9211d99e85e',
+    appKey: '98cc42394054464f95a7e9879484359d',
+    secret: '82cc4ac6b640437aafc7c010bfc4e4d0',
 
     matchType: 1,
     gameType: 2,
