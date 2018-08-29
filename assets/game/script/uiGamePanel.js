@@ -87,6 +87,7 @@ cc.Class({
         this.nodeDict['gameOver'].getComponent(cc.AudioSource).play();
         clearInterval(this.scheduleBullet);
         cc.audioEngine.stop(this.bgmId);
+
     },
 
     roundStart: function() {
@@ -105,6 +106,10 @@ cc.Class({
                 }
             }.bind(this));
         }
+        Game.GameManager.exitGame = false;
+        this.scheduleOnce(()=>{
+            Game.GameManager.exitGam = true;
+        },2.0)
     },
     onDestroy() {
         cc.audioEngine.stop(this.bgmId);

@@ -16,6 +16,9 @@ cc.Class({
     },
 
     sure() {
+        if (!Game.GameManager.exitGame) {
+            return;
+        }
         mvs.engine.leaveRoom("");
         var gamePanel = uiFunc.findUI("uiGamePanel");
         if (gamePanel) {

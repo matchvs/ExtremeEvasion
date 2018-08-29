@@ -1,0 +1,76 @@
+[
+  {
+    "__type__": "cc.SpriteFrame",
+    "content": {
+      "name": "blue",
+      "texture": "45GD7HGtVD1425Xk2UBugo",
+      "rect": [
+        0,
+        0,
+        25,
+        26
+      ],
+      "offset": [
+        0,
+        0
+      ],
+      "originalSize": [
+        25,
+        26
+      ]
+    }
+  },
+  [
+    {
+      "__type__": "cc.Prefab",
+      "_name": "blueBullet",
+      "data": {
+        "__id__": 1
+      }
+    },
+    {
+      "__type__": "cc.Node",
+      "_name": "blue",
+      "_components": [
+        {
+          "__type__": "cc.Sprite",
+          "node": {
+            "__id__": 1
+          },
+          "_spriteFrame": {
+            "__uuid__": "36rsr5m1dEo4+QNAk3i5gv"
+          }
+        },
+        {
+          "__type__": "a5b25JG7SlJrYwVGG3gvsWZ",
+          "node": {
+            "__id__": 1
+          }
+        },
+        {
+          "__type__": "cc.CircleCollider",
+          "node": {
+            "__id__": 1
+          },
+          "_radius": 12.8
+        }
+      ],
+      "_prefab": {
+        "__type__": "cc.PrefabInfo",
+        "root": {
+          "__id__": 1
+        },
+        "asset": {
+          "__uuid__": "89qflNoJZFq6z45036gcl/"
+        },
+        "fileId": "5fuHvIYdxN+Y9WA5fIHXMk"
+      },
+      "_contentSize": {
+        "__type__": "cc.Size",
+        "width": 25,
+        "height": 26
+      },
+      "groupIndex": 4
+    }
+  ]
+]

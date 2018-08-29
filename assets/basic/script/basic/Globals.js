@@ -43,6 +43,7 @@ window.GLB = {
     RADINTION_ITEM_GET: "radintionItemGet",
     SLATE_HITTING: "SlateHitting",
 
+
     channel: 'MatchVS',
     platform: 'alpha',
     gameId: 201552,
