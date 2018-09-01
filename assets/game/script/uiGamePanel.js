@@ -96,8 +96,10 @@ cc.Class({
         this.createBullet();
         this.showLcon();
         Game.GameManager.playerDie = false;
+        Game.GameManager.exitGame = true;
     },
     leaveRoom() {
+        Game.GameManager.exitGame = false;
         if (Game.GameManager.gameState !== GameState.Over) {
             uiFunc.openUI("uiTip", function(obj) {
                 var uiTip = obj.getComponent("uiTip");
@@ -106,10 +108,6 @@ cc.Class({
                 }
             }.bind(this));
         }
-        Game.GameManager.exitGame = false;
-        this.scheduleOnce(()=>{
-            Game.GameManager.exitGam = true;
-        },2.0)
     },
     onDestroy() {
         cc.audioEngine.stop(this.bgmId);

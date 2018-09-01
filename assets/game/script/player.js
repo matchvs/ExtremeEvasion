@@ -98,6 +98,9 @@ cc.Class({
         this.playerPosBk = this.node.getPosition();
     },
     setDirect(position) {
+        if (Game.GameManager.gameState !== GameState.Play){
+            return;
+        }
         //this.playerPos = position;
         this.node.setPosition(position);
     },
