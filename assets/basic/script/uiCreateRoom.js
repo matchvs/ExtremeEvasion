@@ -1,5 +1,6 @@
 var uiPanel = require("uiPanel");
 var mvs = require("Matchvs");
+var GLB = require("Glb");
 cc.Class({
     extends: uiPanel,
     properties: {},
@@ -65,7 +66,6 @@ cc.Class({
     },
 
     createRoom: function() {
-
         Game.GameManager.blockInput();
 
         var create = new mvs.CreateRoomInfo();
@@ -110,6 +110,11 @@ cc.Class({
     },
 
     onDestroy: function() {
+        if (window.wx) {
+            wx.offKeyboardComplete();
+            wx.offKeyboardInput();
+            wx.hideKeyboard();
+        }
         clientEvent.off(clientEvent.eventType.createRoomResponse, this.createRoomResponse, this);
     }
 });
