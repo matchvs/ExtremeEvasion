@@ -32,9 +32,7 @@
   "wechatgame": {
     "REMOTE_SERVER_ROOT": "https://data.tianziyou.com/matchvsGamesRes/extremeEvasion",
     "appid": "wx793199d0ca521154",
-    "isSubdomain": false,
     "orientation": "portrait",
-    "subContext": ""
   },
   "xxteaKey": "c66654d5-e92d-40",
   "zipCompressJs": true
