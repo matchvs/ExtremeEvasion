@@ -26,11 +26,11 @@
     "orientation": "portrait"
   },
   "renderMode": "0",
-  "startScene": "60331843-cd45-4a29-845f-a04a25500983",
+  "startScene": "79146b76-f001-46c3-9f85-5e013f21b436",
   "title": "ExtremeEvasion",
   "webOrientation": "auto",
   "wechatgame": {
-    "REMOTE_SERVER_ROOT": "https://data.tianziyou.com/matchvsGamesRes/extremeEvasion",
+    "REMOTE_SERVER_ROOT": "https://imgs.matchvs.com/static/tianziyou/extremeEvasion",
     "appid": "wx793199d0ca521154",
     "orientation": "portrait"
   },
