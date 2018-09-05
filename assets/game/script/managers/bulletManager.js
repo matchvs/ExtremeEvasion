@@ -18,6 +18,9 @@ cc.Class({
     },
 
     addBullet(data) {
+        if (Game.GameManager.gameState !== GameState.Play){
+            return;
+        }
         var bullet = this.redBulletPool.get();
         if (!bullet) {
             bullet = cc.instantiate(this.redBulletPrefab);
@@ -104,6 +107,12 @@ cc.Class({
         bullet.bulletType = "radintion";
         bullet.setPosition(position);
         bullet.getComponent("radintionBullet").init(obj);
+    },
+    deleteBullet(){
+        var arrBullet = this.children;
+        for (let bullet of arrBullet){
+            this.recycleBullet(bullet);
+        }
     }
 
 });

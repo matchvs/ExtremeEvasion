@@ -111,6 +111,7 @@ cc.Class({
     },
     onDestroy() {
         cc.audioEngine.stop(this.bgmId);
+        clearInterval(this.scheduleBullet);
         clientEvent.off(clientEvent.eventType.roundStart, this.roundStart, this);
         clientEvent.off(clientEvent.eventType.gameOver, this.gameOver, this);
         clientEvent.off(clientEvent.eventType.leaveRoomMedNotify, this.leaveRoom, this);

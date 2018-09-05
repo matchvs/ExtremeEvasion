@@ -251,7 +251,6 @@ cc.Class({
         console.log("错误信息：" + msg);
 
     },
-
     initResponse: function() {
         console.log('初始化成功，开始注册用户');
         var result = mvs.engine.registerUser();
@@ -500,5 +499,6 @@ cc.Class({
     onDestroy() {
         clientEvent.off(clientEvent.eventType.gameOver, this.gameOver, this);
         clientEvent.off(clientEvent.eventType.leaveRoomNotify, this.leaveRoom, this);
+        Game.BulletManager.deleteBullet();
     }
 });
