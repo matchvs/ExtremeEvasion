@@ -499,6 +499,5 @@ cc.Class({
     onDestroy() {
         clientEvent.off(clientEvent.eventType.gameOver, this.gameOver, this);
         clientEvent.off(clientEvent.eventType.leaveRoomNotify, this.leaveRoom, this);
-        Game.BulletManager.deleteBullet();
     }
 });

@@ -5,4 +5,4 @@ require('libs/wx-downloader.js');
 wxDownloader.REMOTE_SERVER_ROOT = "https://imgs.matchvs.com/static/tianziyou/extremeEvasion";
 wxDownloader.SUBCONTEXT_ROOT = "";
 require('src/settings.ec4c2');
-require('main.3a745');
+require('main.6ce5c');
