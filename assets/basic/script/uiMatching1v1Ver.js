@@ -81,10 +81,12 @@ cc.Class({
 
             GLB.playerUserIds = userIds;
         }
+        this.scheduleOnce(this.overTime,3);
     },
 
     joinRoomNotify: function(data) {
         console.log("joinRoomNotify, roomUserInfo:" + JSON.stringify(data.roomUserInfo));
+        this.unschedule(this.overTime);
         var playerIcon = null;
         for (var j = 0; j < this.playerIcons.length; j++) {
             playerIcon = this.playerIcons[j].getComponent('playerIcon');
@@ -94,7 +96,15 @@ cc.Class({
             }
         }
     },
+    overTime(){
+        var result = mvs.engine.joinOver("");
+        console.log("发出关闭房间的通知");
+        if (result !== 0) {
+            console.log("关闭房间失败，错误码：", result);
+        }
+        GLB.vsMachine = true;
 
+    },
     leaveRoom: function() {
         mvs.engine.leaveRoom();
         uiFunc.closeUI(this.node.name);
@@ -133,7 +143,11 @@ cc.Class({
     joinOverResponse: function(data) {
         if (data.joinOverRsp.status === 200) {
             console.log("关闭房间成功");
-            this.notifyGameStart();
+            if (GLB.vsMachine){
+                this.vsMachineStart();
+            } else{
+                this.notifyGameStart();
+            }
         } else {
             console.log("关闭房间失败，回调通知错误码：", data.joinOverRsp.status);
         }
@@ -141,13 +155,32 @@ cc.Class({
 
     notifyGameStart: function() {
         GLB.isRoomOwner = true;
-        var msg = {
-            action: GLB.GAME_START_EVENT,
-            userIds: GLB.playerUserIds
-        };
-        Game.GameManager.sendEventEx(msg);
+        if (GLB.vsMachine) {
+            Game.GameManager.startGame();
+        }else {
+            var msg = {
+                action: GLB.GAME_START_EVENT,
+                userIds: GLB.playerUserIds
+            };
+            Game.GameManager.sendEventEx(msg);
+        }
     },
+    vsMachineStart: function(){
+        var userIds = [GLB.userInfo.id];
+        var machine = 666666;
+        userIds.push(machine);
+        GLB.playerUserIds = userIds;
 
+        setTimeout(function() {
+            this.playerIcons[0].getComponent('playerIcon').setData({id:GLB.playerUserIds[0]});
+            this.playerIcons[1].getComponent('playerIcon').setData({id:GLB.playerUserIds[1]});
+        }.bind(this), 1000);
+
+        setTimeout(function() {
+            this.notifyGameStart();
+        }.bind(this), 1500);
+
+    },
     onDestroy() {
         clientEvent.off(clientEvent.eventType.joinRoomResponse, this.joinRoomResponse, this);
         clientEvent.off(clientEvent.eventType.joinRoomNotify, this.joinRoomNotify, this);

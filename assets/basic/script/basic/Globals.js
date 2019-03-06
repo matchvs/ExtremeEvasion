@@ -5,6 +5,11 @@ window.Game = {
     PlayerManager: null,
     ClickManager: null
 }
+window.MachineDifficulty = cc.Enum({
+    Easy: 0,
+    Normal: 1,
+    Hard: 2
+})
 
 window.GameState = cc.Enum({
     None: 0,
@@ -61,12 +66,13 @@ window.GLB = {
     isRoomOwner: false,
 
     syncFrame: true,
-    FRAME_RATE: 10,
+    FRAME_RATE: 20,
 
     NormalBulletSpeed: 1000,
     limitX: 320,
     limitYTop: 490,
     limitYBottom:620,
-    range:20
+    range:20,
+    vsMachine: false//作为控制AI开启的变量
 
 }

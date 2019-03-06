@@ -3,7 +3,7 @@ cc.Class({
 
     init(node) {
         this.trackingNode = node;
-        this.speed = 2;
+        this.speed = 1;
         this.scheduleOnce(this.twinkleState,7);
     },
 

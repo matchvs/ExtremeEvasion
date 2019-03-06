@@ -29,10 +29,14 @@ cc.Class({
             }
             if (this.itemsNumber < 2) {
                 var itemData = this.setBulletData();
-                mvs.engine.sendFrameEvent(JSON.stringify({
-                    action: GLB.SHOOT_GUN_ITEM,
-                    itemData: itemData
-                }));
+                if (GLB.vsMachine){
+                    this.addItem(itemData);
+                } else{
+                    mvs.engine.sendFrameEvent(JSON.stringify({
+                        action: GLB.SHOOT_GUN_ITEM,
+                        itemData: itemData
+                    }));
+                }
             }
         }.bind(this), 6000);
     },

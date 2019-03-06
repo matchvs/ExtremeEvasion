@@ -20,6 +20,7 @@ cc.Class({
         this.nodeDict['readyGo'].getComponent(cc.Animation).on('finished',this.onFinished,this);
         this.nodeDict["exit"].on(cc.Node.EventType.TOUCH_START, this.exit, this);
         this.bgmId = cc.audioEngine.play(this.bgmAudio, true, 1);
+        this.fireTime = 400;
     },
     onFinished(){
         this.bExit = true;
@@ -38,7 +39,7 @@ cc.Class({
         clearInterval(this.scheduleBullet);
         this.scheduleBullet = setInterval(function() {
             this.sendAddBulletMsg();
-        }.bind(this), 200);
+        }.bind(this), this.fireTime);
     },
     leaveRoom(data) {
         if (Game.GameManager.gameState !== GameState.Over) {
@@ -56,23 +57,30 @@ cc.Class({
     },
     sendDirectMsg(position) {
         if (Game.GameManager.gameState === GameState.Play) {
-            mvs.engine.sendFrameEvent(JSON.stringify({
-                action: GLB.POSITION,
-                position: position
-            }));
+            if (GLB.vsMachine) {
+                Game.PlayerManager.self.setDirect(position);
+            }else{
+                mvs.engine.sendFrameEvent(JSON.stringify({
+                    action: GLB.POSITION,
+                    position: position
+                }));
+            }
         }
-
     },
     sendAddBulletMsg() {
         if (!GLB.isRoomOwner) {
             return;
         }
         var bulletData = Game.BulletManager.setBulletData();
-        if (Game.GameManager.gameState === GameState.Play) {
-            mvs.engine.sendFrameEvent(JSON.stringify({
-                action: GLB.ADD_BULLET,
-                bulletData: bulletData
-            }));
+        if (GLB.vsMachine) {
+            Game.BulletManager.addBullet(bulletData);
+        }else{
+            if (Game.GameManager.gameState === GameState.Play) {
+                mvs.engine.sendFrameEvent(JSON.stringify({
+                    action: GLB.ADD_BULLET,
+                    bulletData: bulletData
+                }));
+            }
         }
     },
     exit() {
@@ -97,6 +105,16 @@ cc.Class({
         this.showLcon();
         Game.GameManager.playerDie = false;
         Game.GameManager.exitGame = true;
+        if (GLB.vsMachine){
+            Game.PlayerManager.vsMachine();
+        }
+        this.scheduleOnce(()=>{
+            this.fireTime = 300;
+        },30);
+        this.scheduleOnce(()=>{
+            this.fireTime = 200;
+            Game.BulletManager.speed = Game.BulletManager.speed * 1.5;
+        },90);
     },
     leaveRoom() {
         Game.GameManager.exitGame = false;
@@ -115,6 +133,7 @@ cc.Class({
         clientEvent.off(clientEvent.eventType.roundStart, this.roundStart, this);
         clientEvent.off(clientEvent.eventType.gameOver, this.gameOver, this);
         clientEvent.off(clientEvent.eventType.leaveRoomMedNotify, this.leaveRoom, this);
+        GLB.vsMachine = Game.GameManager.machine;
     },
 
 });

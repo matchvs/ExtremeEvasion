@@ -84,6 +84,9 @@ cc.Class({
     },
 
     leaveRoomMedNotify: function(data) {
+        if (!this.node){
+            return;
+        }
         for (var j = 0; j < this.players.length; j++) {
             if (this.players[j].userId === data.userID) {
                 this.players[j].init();

@@ -15,6 +15,7 @@ cc.Class({
         this.greenBulletPool = new cc.NodePool();
         this.radintionBulletPool = new cc.NodePool();
         this.redNumber = 0;
+        this.speed = 50;
     },
 
     addBullet(data) {
@@ -35,27 +36,36 @@ cc.Class({
         var bulletDir = Math.floor(Math.random()*4);
         var x = 0;
         var y = 0;
+        var angle = Math.random() * 6.28;
         switch (bulletDir){
-            case 0 : x = -GLB.limitX + Math.random() * 50;
+            case 0 : x = -GLB.limitX - Math.random() * 50;
                      y = -GLB.limitYBottom + Math.random() * (GLB.limitYTop + GLB.limitYBottom);
+                var n = Math.floor(Math.random()*2);
+                if (n === 0){
+                    angle = Math.floor(Math.random()*45)/100*6.28;
+                }else{
+                    angle = 315 + Math.floor(Math.random()*45)/100*6.28;
+                }
                 break;
-            case 1 : x = GLB.limitX - Math.random() * 50;
+            case 1 : x = GLB.limitX + Math.random() * 50;
                      y = -GLB.limitYBottom + Math.random() * (GLB.limitYTop + GLB.limitYBottom);
+                angle = 135 + Math.floor(Math.random()*90)/100*6.28;
                 break;
             case 2 : x = -GLB.limitX + Math.random() * (GLB.limitX * 2);
-                     y = GLB.limitYTop - Math.random() * 50;
+                     y = GLB.limitYTop + Math.random() * 50;
+                angle = 225 + Math.floor(Math.random()*90)/100*6.28;
                 break;
             case 3 : x = -GLB.limitX + Math.random() * (GLB.limitX * 2);
-                     y = -GLB.limitYBottom + Math.random() * 50;
+                     y = -GLB.limitYBottom - Math.random() * 50;
+                angle = 45 + Math.floor(Math.random()*90)/100*6.28;
                 break;
         }
         var bulletPos = cc.p(x,y);
-        var angle = Math.random() * 6.28;
         var speed = 0;
-        if (this.redNumber > 30){
-            speed = 200;
+        if (this.redNumber > 25){
+            speed = this.speed * 1.5;
         }else{
-            speed = 100;
+            speed = this.speed;
         }
         this.redNumber++;
         var data = {bulletPos:bulletPos,
@@ -95,7 +105,7 @@ cc.Class({
             }
             bullet.parent = Game.BulletManager.node;
             bullet.setPosition(position);
-            bullet.getComponent("bullet").init(100,angle*i);
+            bullet.getComponent("bullet").init(this.speed,angle*i);
         }
     },
     radintionBullet(obj,position){

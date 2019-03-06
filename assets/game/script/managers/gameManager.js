@@ -1,6 +1,9 @@
 var mvs = require("Matchvs");
 cc.Class({
     extends: cc.Component,
+    properties: {
+        machine: false
+    },
     blockInput() {
         Game.GameManager.getComponent(cc.BlockInputEvents).enabled = true;
         setTimeout(function() {
@@ -25,6 +28,7 @@ cc.Class({
         this.playerDie = false;
         this.exitGame = true;
 
+        GLB.vsMachine = this.machine;
         // if (window.wx) {
         //     wx.login({
         //         success: function() {
@@ -418,7 +422,14 @@ cc.Class({
         this.isRivalLeave = false;
         cc.director.loadScene('game', function() {
             uiFunc.openUI("uiGamePanel", function() {
-                this.sendReadyMsg();
+                if (GLB.vsMachine) {
+                    setTimeout(function() {
+                        Game.GameManager.gameState = GameState.Play;
+                    }.bind(this), 2000);
+                    clientEvent.dispatch(clientEvent.eventType.roundStart);
+                }else{
+                    this.sendReadyMsg();
+                }
             }.bind(this));
         }.bind(this));
     },

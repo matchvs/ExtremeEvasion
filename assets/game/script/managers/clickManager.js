@@ -50,7 +50,11 @@ cc.Class({
     //start () {},
     update (dt) {
         if (this.bTouch){
-            this.node.dispatchEvent(new cc.Event.EventCustom(clientEvent.eventType.playerMove,true));
+            if (GLB.vsMachine) {
+                Game.PlayerManager.self.setDirect(this.playerPos);
+            }else{
+                this.node.dispatchEvent(new cc.Event.EventCustom(clientEvent.eventType.playerMove,true));
+            }
         }
     },
 });

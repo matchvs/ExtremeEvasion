@@ -88,12 +88,20 @@ cc.Class({
                 if (cc.Canvas.instance.designResolution.height > cc.Canvas.instance.designResolution.width) {
                     uiFunc.openUI("uiMatchingVer", function(obj) {
                         var matching = obj.getComponent("uiMatching");
-                        matching.joinRandomRoom();
+                        if (GLB.vsMachine) {
+                            matching.vsMachineStart();
+                        }else{
+                            matching.joinRandomRoom();
+                        }
                     });
                 } else {
                     uiFunc.openUI("uiMatching", function(obj) {
                         var matching = obj.getComponent("uiMatching");
-                        matching.joinRandomRoom();
+                        if (GLB.vsMachine) {
+                            matching.vsMachineStart();
+                        }else{
+                            matching.joinRandomRoom();
+                        }
                     });
                 }
             } else {
@@ -104,24 +112,40 @@ cc.Class({
                 if (cc.Canvas.instance.designResolution.height > cc.Canvas.instance.designResolution.width) {
                     uiFunc.openUI("uiMatching1v1Ver", function(obj) {
                         var matching = obj.getComponent("uiMatching1v1Ver");
-                        matching.joinRandomRoom();
+                        if (GLB.vsMachine) {
+                            matching.vsMachineStart();
+                        }else{
+                            matching.joinRandomRoom();
+                        }
                     });
                 } else {
                     uiFunc.openUI("uiMatching1v1", function(obj) {
                         var matching = obj.getComponent("uiMatching1v1");
-                        matching.joinRandomRoom();
+                        if (GLB.vsMachine) {
+                            matching.vsMachineStart();
+                        }else{
+                            matching.joinRandomRoom();
+                        }
                     });
                 }
             } else if (GLB.MAX_PLAYER_COUNT === 4) {
                 if (cc.Canvas.instance.designResolution.height > cc.Canvas.instance.designResolution.width) {
                     uiFunc.openUI("uiMatching2v2Ver", function(obj) {
                         var matching = obj.getComponent("uiMatching2v2Ver");
-                        matching.joinRandomRoom();
+                        if (GLB.vsMachine) {
+                            matching.vsMachineStart();
+                        }else{
+                            matching.joinRandomRoom();
+                        }
                     });
                 } else {
                     uiFunc.openUI("uiMatching2v2Ver", function(obj) {
                         var matching = obj.getComponent("uiMatching2v2Ver");
-                        matching.joinRandomRoom();
+                        if (GLB.vsMachine) {
+                            matching.vsMachineStart();
+                        }else{
+                            matching.joinRandomRoom();
+                        }
                     });
                 }
             }

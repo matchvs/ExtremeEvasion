@@ -19,7 +19,7 @@ cc.Class({
 
     init(playerId) {
         this.playerId = playerId;
-        this.playerPos = cc.p();
+        this.targetPos = null;
         this.playerPosBk = this.node.getPosition();
         this.heart = 2;
         this.bUnmatched = false;
@@ -37,12 +37,12 @@ cc.Class({
             this.sendHurtMsg();
         }
         if (group === "diffuseItem"){
-            this.sendDiffuseItemMsg(other.id);
+            this.sendDiffuseItemMsg(other.node.getPosition());
             other.getComponent("item").destroyItem();
             this.unmatchedState("twinkle");
         }
         if(group === "radiationItem"){
-            this.sendRadintionItemMsg(other.id);
+            this.sendRadintionItemMsg(other.node.getPosition());
             other.getComponent("item").destroyItem();
             this.unmatchedState("twinkle");
         }
@@ -75,10 +75,14 @@ cc.Class({
     dead() {
         //游戏结束--
         if (GLB.isRoomOwner) {
-            var msg = {
-                action: GLB.GAME_OVER_EVENT
-            };
-            Game.GameManager.sendEventEx(msg);
+            if (GLB.vsMachine) {
+                Game.GameManager.gameOver();
+            }else{
+                var msg = {
+                    action: GLB.GAME_OVER_EVENT
+                };
+                Game.GameManager.sendEventEx(msg);
+            }
         }
 
     },
@@ -98,35 +102,56 @@ cc.Class({
         this.playerPosBk = this.node.getPosition();
     },
     setDirect(position) {
-        if (Game.GameManager.gameState !== GameState.Play){
-            return;
-        }
-        //this.playerPos = position;
-        this.node.setPosition(position);
+        this.targetPos = position;
     },
     sendHurtMsg() {
-        if (Game.GameManager.gameState === GameState.Play && GLB.isRoomOwner) {
-            mvs.engine.sendFrameEvent(JSON.stringify({
-                action: GLB.HURT,
-                playerId: this.playerId
-            }));
+        if (GLB.vsMachine) {
+            this.hurt();
+        }else{
+            if (Game.GameManager.gameState === GameState.Play && GLB.isRoomOwner) {
+                mvs.engine.sendFrameEvent(JSON.stringify({
+                    action: GLB.HURT,
+                    playerId: this.playerId
+                }));
+            }
         }
     },
-    sendDiffuseItemMsg(itemId){
-        if (Game.GameManager.gameState === GameState.Play && GLB.isRoomOwner) {
-            mvs.engine.sendFrameEvent(JSON.stringify({
-                action: GLB.DIFFUSE_ITEM_GET,
-                playerId: this.playerId,
-            }));
+    sendDiffuseItemMsg(pos){
+        if (GLB.vsMachine) {
+            var type = this.playerId === GLB.userInfo.id ? "blue" : "green";
+            Game.BulletManager.diffuseBullet(type, pos);
+        }else{
+            if (Game.GameManager.gameState === GameState.Play && GLB.isRoomOwner) {
+                mvs.engine.sendFrameEvent(JSON.stringify({
+                    action: GLB.DIFFUSE_ITEM_GET,
+                    playerId: this.playerId,
+                    pos: pos
+                }));
+            }
         }
     },
-    sendRadintionItemMsg(itemId){
-        if (Game.GameManager.gameState === GameState.Play && GLB.isRoomOwner) {
-            mvs.engine.sendFrameEvent(JSON.stringify({
-                action: GLB.RADINTION_ITEM_GET,
-                playerId: this.playerId,
-            }));
+    sendRadintionItemMsg(pos){
+        if (GLB.vsMachine) {
+            let obj = this.playerId === GLB.userInfo.id ? Game.PlayerManager.rival.node : Game.PlayerManager.self.node;
+            Game.BulletManager.radintionBullet(obj, pos);
+        }else{
+            if (Game.GameManager.gameState === GameState.Play && GLB.isRoomOwner) {
+                mvs.engine.sendFrameEvent(JSON.stringify({
+                    action: GLB.RADINTION_ITEM_GET,
+                    playerId: this.playerId,
+                    pos: pos
+                }));
+            }
         }
     },
+    update(dt){
+        if (this.targetPos && Game.GameManager.gameState === GameState.Play) {
+            var playerPos = this.node.getPosition();
+            var nextPosX = cc.lerp(playerPos.x, this.targetPos.x, 4 * dt);
+            var nextPosY = cc.lerp(playerPos.y, this.targetPos.y, 4 * dt);
+            this.node.setPosition(cc.p(nextPosX,nextPosY));
+        }
+    }
+
 
 });
