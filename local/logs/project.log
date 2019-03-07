@@ -1,56 +1,56 @@
-2019-03-06T08:21:51.321Z - normal: Load ~/.CocosCreator/settings.json
-2019-03-06T08:21:51.326Z - normal: checking language setting...
-2019-03-06T08:21:51.326Z - normal: Language: zh
-2019-03-06T08:21:52.180Z - success: protocol editor-framework registered
-2019-03-06T08:21:52.180Z - success: protocol app registered
-2019-03-06T08:21:52.180Z - success: protocol theme registered
-2019-03-06T08:21:52.181Z - success: protocol packages registered
-2019-03-06T08:21:52.181Z - success: protocol unpack registerred
-2019-03-06T08:21:52.181Z - success: protocol disable-commonjs registerred
-2019-03-06T08:21:52.392Z - normal: connected!
-2019-03-06T08:21:52.395Z - normal: Check project /Users/mac/Documents/MatchVs/extremeEvasion
-2019-03-06T08:21:52.408Z - normal: Initializing Cocos2d
-2019-03-06T08:21:52.590Z - normal: Initializing Asset Database
-2019-03-06T08:21:52.628Z - success: protocol uuid registerred
-2019-03-06T08:21:52.628Z - success: protocol db registerred
-2019-03-06T08:21:52.628Z - success: protocol thumbnail registerred
-2019-03-06T08:21:52.628Z - normal: Loading editor/builtin packages
-2019-03-06T08:21:52.648Z - success: anysdk loaded
-2019-03-06T08:21:52.771Z - success: assets loaded
-2019-03-06T08:21:52.777Z - success: builder loaded
-2019-03-06T08:21:52.779Z - success: cocos-analytics loaded
-2019-03-06T08:21:52.783Z - success: console loaded
-2019-03-06T08:21:52.818Z - success: fb-instant-games loaded
-2019-03-06T08:21:52.823Z - success: hierarchy loaded
-2019-03-06T08:21:52.829Z - success: inspector loaded
-2019-03-06T08:21:52.830Z - success: keystore loaded
-2019-03-06T08:21:52.834Z - success: node-library loaded
-2019-03-06T08:21:52.836Z - success: package-asset loaded
-2019-03-06T08:21:52.838Z - success: preferences loaded
-2019-03-06T08:21:52.843Z - success: project-exporter loaded
-2019-03-06T08:21:52.861Z - success: project-importer loaded
-2019-03-06T08:21:52.864Z - success: project-settings loaded
-2019-03-06T08:21:52.867Z - success: ui-kit loaded
-2019-03-06T08:21:52.875Z - success: ui-grid loaded
-2019-03-06T08:21:52.878Z - success: scene loaded
-2019-03-06T08:21:52.880Z - success: sprite-editor loaded
-2019-03-06T08:21:52.883Z - success: store loaded
-2019-03-06T08:21:52.891Z - success: timeline loaded
-2019-03-06T08:21:52.892Z - normal: Loading builtin packages
-2019-03-06T08:21:52.896Z - success: asset-db-debugger loaded
-2019-03-06T08:21:52.897Z - success: color-picker loaded
-2019-03-06T08:21:52.901Z - success: package-manager loaded
-2019-03-06T08:21:52.903Z - success: qqplay-adapter loaded
-2019-03-06T08:21:52.912Z - success: sdkbox loaded
-2019-03-06T08:21:52.916Z - success: tester loaded
-2019-03-06T08:21:52.920Z - success: ui-kit-preview-extra loaded
-2019-03-06T08:21:52.926Z - success: ui-kit-preview loaded
-2019-03-06T08:21:52.929Z - success: ui-tree loaded
-2019-03-06T08:21:52.930Z - success: weapp-adapter loaded
-2019-03-06T08:21:53.967Z - normal: Initializing project /Users/mac/Documents/MatchVs/extremeEvasion
-2019-03-06T08:21:53.969Z - normal: Loading packages
-2019-03-06T08:21:53.982Z - success: plugin-matchvs loaded
-2019-03-06T08:21:53.983Z - normal: Watching packages
-2019-03-06T08:21:54.115Z - normal: Run Application
-2019-03-06T08:21:54.796Z - success: preview server running at http://localhost:7457
-2019-03-06T08:22:02.121Z - normal: 1.9.3
+2019-03-07T03:50:12.761Z - normal: Load ~/.CocosCreator/settings.json
+2019-03-07T03:50:12.766Z - normal: checking language setting...
+2019-03-07T03:50:12.766Z - normal: Language: zh
+2019-03-07T03:50:13.334Z - success: protocol editor-framework registered
+2019-03-07T03:50:13.334Z - success: protocol app registered
+2019-03-07T03:50:13.334Z - success: protocol theme registered
+2019-03-07T03:50:13.334Z - success: protocol packages registered
+2019-03-07T03:50:13.335Z - success: protocol unpack registerred
+2019-03-07T03:50:13.336Z - success: protocol disable-commonjs registerred
+2019-03-07T03:50:13.548Z - normal: connected!
+2019-03-07T03:50:13.550Z - normal: Check project /Users/mac/ExtremeEvasion
+2019-03-07T03:50:13.551Z - normal: Initializing Cocos2d
+2019-03-07T03:50:13.724Z - normal: Initializing Asset Database
+2019-03-07T03:50:13.749Z - success: protocol uuid registerred
+2019-03-07T03:50:13.749Z - success: protocol db registerred
+2019-03-07T03:50:13.749Z - success: protocol thumbnail registerred
+2019-03-07T03:50:13.750Z - normal: Loading editor/builtin packages
+2019-03-07T03:50:13.764Z - success: anysdk loaded
+2019-03-07T03:50:13.854Z - success: assets loaded
+2019-03-07T03:50:13.858Z - success: builder loaded
+2019-03-07T03:50:13.859Z - success: cocos-analytics loaded
+2019-03-07T03:50:13.863Z - success: console loaded
+2019-03-07T03:50:13.895Z - success: fb-instant-games loaded
+2019-03-07T03:50:13.900Z - success: hierarchy loaded
+2019-03-07T03:50:13.904Z - success: inspector loaded
+2019-03-07T03:50:13.906Z - success: keystore loaded
+2019-03-07T03:50:13.910Z - success: node-library loaded
+2019-03-07T03:50:13.912Z - success: package-asset loaded
+2019-03-07T03:50:13.914Z - success: preferences loaded
+2019-03-07T03:50:13.917Z - success: project-exporter loaded
+2019-03-07T03:50:13.934Z - success: project-importer loaded
+2019-03-07T03:50:13.938Z - success: project-settings loaded
+2019-03-07T03:50:13.942Z - success: ui-kit loaded
+2019-03-07T03:50:13.947Z - success: ui-grid loaded
+2019-03-07T03:50:13.952Z - success: scene loaded
+2019-03-07T03:50:13.954Z - success: sprite-editor loaded
+2019-03-07T03:50:13.958Z - success: store loaded
+2019-03-07T03:50:13.964Z - success: timeline loaded
+2019-03-07T03:50:13.965Z - normal: Loading builtin packages
+2019-03-07T03:50:13.969Z - success: asset-db-debugger loaded
+2019-03-07T03:50:13.969Z - success: color-picker loaded
+2019-03-07T03:50:13.973Z - success: package-manager loaded
+2019-03-07T03:50:13.974Z - success: qqplay-adapter loaded
+2019-03-07T03:50:13.980Z - success: sdkbox loaded
+2019-03-07T03:50:13.984Z - success: tester loaded
+2019-03-07T03:50:13.987Z - success: ui-kit-preview-extra loaded
+2019-03-07T03:50:13.990Z - success: ui-kit-preview loaded
+2019-03-07T03:50:13.992Z - success: ui-tree loaded
+2019-03-07T03:50:13.993Z - success: weapp-adapter loaded
+2019-03-07T03:50:14.740Z - normal: Initializing project /Users/mac/ExtremeEvasion
+2019-03-07T03:50:14.743Z - normal: Loading packages
+2019-03-07T03:50:14.754Z - success: plugin-matchvs loaded
+2019-03-07T03:50:14.755Z - normal: Watching packages
+2019-03-07T03:50:14.846Z - normal: Run Application
+2019-03-07T03:50:15.602Z - success: preview server running at http://localhost:7456
+2019-03-07T03:50:21.257Z - normal: 1.9.3
