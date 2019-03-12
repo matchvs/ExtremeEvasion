@@ -147,11 +147,14 @@ cc.Class({
     update(dt){
         if (this.targetPos && Game.GameManager.gameState === GameState.Play) {
             var playerPos = this.node.getPosition();
-            var nextPosX = cc.lerp(playerPos.x, this.targetPos.x, 4 * dt);
-            var nextPosY = cc.lerp(playerPos.y, this.targetPos.y, 4 * dt);
-            this.node.setPosition(cc.p(nextPosX,nextPosY));
+            var nextPosX = this.lerp(playerPos.x, this.targetPos.x, 4 * dt);
+            var nextPosY = this.lerp(playerPos.y, this.targetPos.y, 4 * dt);
+            this.node.setPosition(cc.v2(nextPosX,nextPosY));
         }
-    }
+    },
 
+    lerp(a, b, r) {
+        return a + (b - a) * r;
+    }
 
 });

@@ -45,7 +45,7 @@ cc.Class({
         var itemType = Math.floor(Math.random()*2);
         var x = -GLB.limitX + Math.random() * GLB.limitX*2;
         var y = -GLB.limitYBottom + Math.random() * (GLB.limitYTop + GLB.limitYBottom - 20);
-        var itemPos = cc.p(x,y);
+        var itemPos = cc.v2(x,y);
         var data = {itemPos:itemPos,
             itemType:itemType}
         return data;

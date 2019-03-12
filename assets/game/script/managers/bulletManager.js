@@ -60,7 +60,7 @@ cc.Class({
                 angle = 45 + Math.floor(Math.random()*90)/100*6.28;
                 break;
         }
-        var bulletPos = cc.p(x,y);
+        var bulletPos = cc.v2(x,y);
         var speed = 0;
         if (this.redNumber > 25){
             speed = this.speed * 1.5;

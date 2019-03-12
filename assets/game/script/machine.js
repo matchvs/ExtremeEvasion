@@ -95,7 +95,7 @@ cc.Class({
         var bullet = target.getComponent("bullet");
         var x = target.x + bullet.speed * this.dt* Math.cos(bullet.angle);
         var y = target.y + bullet.speed * this.dt* Math.cos(bullet.angle);
-        return cc.p(x,y);
+        return cc.v2(x,y);
     },
     safeDirection(){
         var arrMove = [];

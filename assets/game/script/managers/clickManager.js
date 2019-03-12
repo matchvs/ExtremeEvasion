@@ -18,8 +18,8 @@ cc.Class({
 
     onLoad () {
         Game.ClickManager = this;
-        this.clickPosBk = cc.p();
-        this.playerPos = cc.p();
+        this.clickPosBk = cc.v2();
+        this.playerPos = cc.v2();
         this.node.on(cc.Node.EventType.TOUCH_START,this.touchstart,this);
         this.node.on(cc.Node.EventType.TOUCH_MOVE,this.touchmove,this);
         //this.node.on(cc.Node.EventType.TOUCH_END,this.touchmove,this);
@@ -45,7 +45,7 @@ cc.Class({
             x < -GLB.limitX + GLB.range ? -GLB.limitX + GLB.range : x;
         y = y > GLB.limitYTop - GLB.range ? GLB.limitYTop - GLB.range:
             y < -GLB.limitYBottom + GLB.range ? -GLB.limitYBottom + GLB.range : y;
-        this.playerPos = cc.p(x,y);
+        this.playerPos = cc.v2(x,y);
     },
     //start () {},
     update (dt) {
